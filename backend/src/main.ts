@@ -6,7 +6,11 @@ async function bootstrap() {
 
   // Allow local and deployed frontends via env
   // Example: CORS_ORIGIN="http://localhost:3000,https://your-frontend.onrender.com"
-  const corsOrigin = (process.env.CORS_ORIGIN ?? 'http://localhost:3000')
+  const defaultOrigins = [
+    'http://localhost:3000',
+    'https://product-data-explorer-flax.vercel.app'
+  ];
+  const corsOrigin = (process.env.CORS_ORIGIN ?? defaultOrigins.join(','))
     .split(',')
     .map((s) => s.trim())
     .filter(Boolean);
