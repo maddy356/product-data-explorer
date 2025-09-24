@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 // src/pool.ts
+=======
+>>>>>>> 11cee2d0edcd484da38e6037f6a94b79f4643859
 import { Pool } from 'pg';
 
 export const pool = new Pool({
@@ -11,4 +14,8 @@ export const pool = new Pool({
     (process.env.DATABASE_URL ?? '').includes('sslmode=require')
       ? { rejectUnauthorized: false }
       : undefined,
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 11cee2d0edcd484da38e6037f6a94b79f4643859
