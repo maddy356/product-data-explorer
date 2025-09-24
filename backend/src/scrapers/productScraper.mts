@@ -1,13 +1,6 @@
-<<<<<<< HEAD
 import { log, PlaywrightCrawler } from 'crawlee';
 import { QueryResult } from 'pg'; // ✅ import type from pg
 import { pool } from '../pool'; // ✅ import your shared pool instance
-=======
-import { PlaywrightCrawler, log } from 'crawlee';
-import { Pool, QueryResult } from './pool.ts';
-
-
->>>>>>> 11cee2d0edcd484da38e6037f6a94b79f4643859
 const BASE = 'https://www.worldofbooks.com';
 
 function toAbs(href: string): string {
