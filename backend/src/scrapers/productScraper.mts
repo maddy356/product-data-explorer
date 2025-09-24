@@ -1,13 +1,6 @@
 import { PlaywrightCrawler, log } from 'crawlee';
-import { Pool, QueryResult } from 'pg';
+import { Pool, QueryResult } from './pool.ts';
 
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'product_data_explorer',
-  password: 'madhur',
-  port: 5432,
-});
 
 const BASE = 'https://www.worldofbooks.com';
 
