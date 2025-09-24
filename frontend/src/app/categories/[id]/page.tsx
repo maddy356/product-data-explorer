@@ -4,6 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useParams } from "next/navigation";
 
+const API = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 interface Product {
   id: number;
   title: string;
@@ -26,7 +28,7 @@ export default function CategoryProductsPage() {
     queryKey: ["category-products", id],
     queryFn: async () => {
       const res = await axios.get<CategoryResponse>(
-        `http://localhost:3001/categories/${id}`
+        `${API}/categories/${id}`
       );
       return res.data.products || [];
     },

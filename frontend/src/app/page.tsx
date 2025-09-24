@@ -15,11 +15,12 @@ export default function HomePage() {
   const [loading, setLoading] = useState<string | null>(null);
   const [message, setMessage] = useState<string>("");
 
+  const API = process.env.NEXT_PUBLIC_API_BASE_URL;
   const triggerScraper = async (type: "categories" | "products") => {
     setLoading(type);
     setMessage("");
     try {
-      await axios.post(`http://localhost:3001/scraper/${type}`);
+      await axios.post(`${API}/scraper/${type}`);
       setMessage(`${type} scraper triggered successfully!`);
     } catch (e) {
       console.error(e);
