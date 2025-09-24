@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",                       // stable target for Node 18/20
+    "module": "commonjs",                     // required for Nest build
+    "moduleResolution": "node10",               // resolve node-style imports
+    "strict": true,                           // strict type checking
+    "esModuleInterop": true,                  // allow default imports from CJS
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,            // required for NestJS
+    "experimentalDecorators": true,           // required for NestJS
+    "skipLibCheck": true,                     // faster builds
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",                       // compiled JS output folder
+    "rootDirs": ["./src","./test"],                       // source code root
+    "baseUrl": "./",                          // base path
+    "resolveJsonModule": true ,
+                  // allow importing JSON
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}
