@@ -1,15 +1,7 @@
+
 import { log, PlaywrightCrawler } from 'crawlee';
-import { Pool, QueryResult } from 'pg';
-
-// PostgreSQL connection
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'product_data_explorer',
-  password: 'madhur',
-  port: 5432,
-});
-
+import { QueryResult } from 'pg'; // ✅ import type from pg
+import { pool } from '../pool'; // ✅ import your shared pool instance
 const BASE = 'https://www.worldofbooks.com';
 
 function toAbs(href: string): string {

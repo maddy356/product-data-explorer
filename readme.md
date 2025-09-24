@@ -1,53 +1,22 @@
 # Product Data Explorer
 
-A full-stack solo project for Penetration Testing Lifecycle Management coursework.  
-Built with:
-- **Frontend:** Next.js (React, Tailwind, React Query)
-- **Backend:** NestJS (TypeORM, PostgreSQL)
-- **Database:** PostgreSQL
-- **Scrapers:** Crawlee + Playwright (for categories & products)
+A full-stack web app that scrapes categories & products from **World of Books** using Crawlee + Playwright, stores them in **PostgreSQL**, and displays them with a **Next.js frontend**.
 
 ---
 
 ## 🚀 Features
-- Scrapes categories and products from [World of Books](https://www.worldofbooks.com)
-- Stores results in PostgreSQL
-- Browse categories and products in a clean UI
-- Trigger scrapers from frontend buttons
-- Fully REST API based architecture
+- Scrapes categories & products directly from the site.
+- Stores data in PostgreSQL with proper relationships.
+- API built with **NestJS** backend.
+- Next.js 15 frontend with category & product browsing.
+- One-click product/category scraping from the UI.
+- Ready to deploy on **Vercel** + **Render/Heroku** (for backend + DB).
 
 ---
 
-## 📂 Project Structure
-product-data-explorer/
-├── backend/ # NestJS API + TypeORM + Scrapers
-├── frontend/ # Next.js frontend (deployed on Vercel)
-└── README.md
+## 🛠️ Setup
 
-
----
-
-## 🛠️ Setup (Local Development)
-
- 1. Clone repository
-```sh
-git clone https://github.com/<your-username>/product-data-explorer.git
+### 1. Clone the repo
+```bash
+git clone https://github.com/maddy356/product-data-explorer.git
 cd product-data-explorer
-2. Start PostgreSQL (local)
-psql -U postgres -d product_data_explorer -h localhost -p 5432
-
-3. Backend
-cd backend
-npm install
-npm run start:dev
-
-
-Runs on → http://localhost:3001
-
-4. Frontend
-cd frontend
-npm install
-npm run dev
-
-
-Runs on → http://localhost:3000
