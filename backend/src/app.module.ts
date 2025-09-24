@@ -1,27 +1,32 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CategoryModule } from './modules/categories/category.module.js';
-import { NavigationModule } from './modules/navigation/navigation.module.js';
-import { ProductModule } from './modules/products/product.module.js';
-import { ScraperModule } from './modules/scraper/scraper.module.js';
+import { ConfigModule } from '@nestjs/config';
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.DB_HOST || 'localhost',
-      port: parseInt(process.env.DB_PORT || '5432'),
-      username: process.env.DB_USER || 'postgres',
-      password: process.env.DB_PASS || 'madhur',
-      database: process.env.DB_NAME || 'product_data_explorer',
-      autoLoadEntities: true,
-      synchronize: true, // ⚠️ dev only
+    TypeOrmModule.forRootAsync({
+      useFactory: () => {
+        const url =
+          process.env.DATABASE_URL ??
+          `postgres://${process.env.POSTGRES_USER}:${process.env.POSTGRES_PASSWORD}` +
+            `@${process.env.POSTGRES_HOST}:${process.env.POSTGRES_PORT ?? 5432}/${process.env.POSTGRES_DB}`;
+
+        const useSsl =
+          (process.env.DB_SSL ?? '').toLowerCase() === 'true' ||
+          (url ?? '').includes('sslmode=require');
+
+        return {
+          type: 'postgres',
+          url,
+          ssl: useSsl ? { rejectUnauthorized: false } : undefined,
+          autoLoadEntities: true,
+          // In prod, prefer migrations.
+          synchronize: false,
+        };
+      },
     }),
-    NavigationModule,
-    CategoryModule,
-    ProductModule,
-    ScraperModule,
+    // ...your modules
   ],
 })
 export class AppModule {}
